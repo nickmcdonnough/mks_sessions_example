@@ -18,7 +18,26 @@ module Sesh
       result = @db.exec(%Q[
         SELECT * FROM users WHERE username = '#{username}';
       ])
-      build_user(result.first)
+
+      user_data = result.first
+      
+      if user_data
+        build_user(user_data)
+      else
+        nil
+      end
+    end
+
+    def username_exists?(username)
+      result = @db.exec(%Q[
+        SELECT * FROM users WHERE username = '#{username}';
+      ])
+
+      if result.count > 1
+        true
+      else
+        false
+      end
     end
 
     def build_user(data)

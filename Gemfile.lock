@@ -17,6 +17,8 @@ GEM
       byebug (~> 2.7)
       pry (~> 0.10)
     rack (1.5.2)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (1.5.3)
       rack
     sinatra (1.4.5)
@@ -32,4 +34,5 @@ PLATFORMS
 DEPENDENCIES
   pg
   pry-byebug
+  rack-flash3
   sinatra
