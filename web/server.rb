@@ -4,8 +4,11 @@ require 'rack-flash'
 class MKS::Server < Sinatra::Application
 
   configure do
-    set :sessions, true
     use Rack::Flash
+    use Rack::Session::Cookie, :key => 'rack.session',
+                               :path => '/',
+                               :expire_after => 31_536_000, # a year in seconds
+                               :secret => 'my secret'
   end
 
   get '/' do
